@@ -51,14 +51,21 @@ handlers:
   upload: static/(.*\.otf)
 
 - url: /
+  secure: always
   static_files: static/index.html
   upload: static/index.html
+  http_headers:
+    Strict-Transport-Security: "max-age=15552001; includeSubDomains; preload"
 
 - url: /blog/.*
+  secure: always
   static_files: static/index.html
   upload: static/index.html
+  http_headers:
+    Strict-Transport-Security: "max-age=15552001; includeSubDomains; preload"
 
 - url: /api/.*
+  secure: always
   script: _go_app
 
 skip_files:
