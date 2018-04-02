@@ -1,0 +1,93 @@
+
+runtime: go
+api_version: go1.8
+
+handlers:
+
+# All URLs are handled by the Go application script
+  
+- url: /static/(.*\.ico)
+  mime_type: image/x-icon
+  static_files: static/\1
+  upload: static/(.*\.ico)
+
+- url: /static/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+  static_files: static/\1
+  upload: static/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+
+- url: /static/(.*\.css)
+  mime_type: text/css
+  static_files: static/\1
+  upload: static/(.*\.css)
+  
+- url: /static/(.*\.js)
+  mime_type: text/javascript
+  static_files: static/\1
+  upload: static/(.*\.js)
+
+- url: /static/(.*\.ttf)
+  mime_type: font/truetype
+  static_files: static/\1
+  upload: static/(.*\.ttf)
+
+- url: /static/(.*\.woff)
+  mime_type: font/woff
+  static_files: static/\1
+  upload: static/(.*\.woff)
+
+- url: /static/(.*\.woff2)
+  mime_type: font/woff2
+  static_files: static/\1
+  upload: static/(.*\.woff2)
+
+- url: /static/(.*\.eot)
+  mime_type: application/vnd.ms-fontobject
+  static_files: static/\1
+  upload: static/(.*\.woff2)
+
+- url: /static/(.*\.otf)
+  mime_type: font/opentype
+  static_files: static/\1
+  upload: static/(.*\.otf)
+
+- url: /
+  static_files: static/index.html
+  upload: static/index.html
+
+- url: /.*
+  script: _go_app
+
+skip_files:
+- ^(.*/)?.*/assets/.*$
+- ^(.*/)?.*/build/.*$
+- ^(.*/)?.*/test/.*$
+- ^(.*/)?.*/templates/.*$
+- ^(.*/)?.*/node_modules/.*$
+
+- ^(assets/.*)
+- ^(build/.*)
+- ^(test/.*)
+- ^(templates/.*)
+- ^(node_modules/.*)
+
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.DS_Store$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
+
+
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?tests$
+- ^(.*/)?test$
+- ^test/(.*/)?
+- ^COPYING.LESSER
+- ^README\..*
+- \.gitignore
+- ^\.git/.*
+- \.*\.lint$
+- ^fabfile\.py
+- ^testrunner\.py
+- ^grunt\.js
