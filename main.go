@@ -41,6 +41,7 @@ func escapeQuotes(str string) string {
 func returnJsonWithAllowedOrigins(w http.ResponseWriter, message string) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Set("Content-Type", "application/json")
 	fmt.Fprintln(w, "{\"content\":\""+escapeQuotes(message)+"\"}")
 }
 
